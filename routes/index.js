@@ -13,6 +13,7 @@ api.put('/product/:productId', productCtr.updateProduct);
 api.delete('/product/:productId', productCtr.deleteProduct);
 api.post('/signup', userCtrl.signUp);
 api.post('/signin', userCtrl.signIn);
+api.get('/users', userCtrl.getUsers);
 api.get('/private', auth, (req, res) => {
     res.status(200).send({ message: 'Tienes acceso' });
 });

@@ -20,6 +20,14 @@ function signUp(req, res) {
     })
 }
 
+function getUsers(req, res) {
+    User.find({}, (err, users) => {
+        if (err) return res.status(500).send({ message: `Error al realizar la peticion: ${err}` })
+        if (!users) return res.status(404).send({ message: `No existen productos` })
+        res.send(200, { users })
+    });
+};
+
 function signIn(req, res) {
     User.find({ email: req.body.email }, (err, user) => {
         if (err) return res.status(500).send({ message: err });
@@ -35,5 +43,6 @@ function signIn(req, res) {
 
 module.exports = {
     signUp,
-    signIn
+    signIn,
+    getUsers
 }
