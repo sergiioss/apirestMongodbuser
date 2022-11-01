@@ -30,8 +30,8 @@ UserSchema.pre('save', (next) => {
     });
 });
 
-UserSchema.methods.gravatar = function(){
-    if(!this.email) return `https://gravatar.com/avatar/?s=2006&d=retro`
+UserSchema.methods.gravatar = function () {
+    if (!this.email) return `https://gravatar.com/avatar/?s=2006&d=retro`
 
     const md5 = crypto.createHash('md5').update(this.email).digest('hex')
     return `https://gravatar.com/avatar/${md5}?s=200&d=retro`
